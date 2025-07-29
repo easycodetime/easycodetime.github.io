@@ -7,19 +7,19 @@
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <script src='https://pub-43c06573bc27485093cd50efd04e9e7b.r2.dev/GmeekVercount.js'></script><script src='https://pub-43c06573bc27485093cd50efd04e9e7b.r2.dev/GmeekRonanTheme.js'></script>
     <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
-<meta name="description" content="# 根据pid知道可执行文件路径
+<meta name="description" content="### 根据pid知道可执行文件路径
 ```readlink -f /proc/pid/exe```
 
-# 遍历所有进程的可执行文件路径
+### 遍历所有进程的可执行文件路径
 ```for pid in $(ls /proc | grep -E '^[0-9]+$'); do exe=$(readlink -f /proc/$pid/exe 2>/dev/null) && echo '$pid $exe'; done```
 
-# find搜索
+### find搜索
 ```
 find / -type f -name '*.so' | grep -i 'log' | xargs -n1 -I{} sh -c 'strings '{}' | grep '搜索字符串' && echo 'find in: {}' && echo'
 find / -type f -name '*.so' | grep -i 'log' | xargs -n1 -I{} sh -c 'readelf -s '{}' | grep '搜索字符串' && echo 'find in: {}' && echo'
 ```
 
-# strace常用记录
+### strace常用记录
 ```
 strace -xx -f -o xxx.log -e trace=network,write,read -p pid     以16进制形式来记录
 strace -s 2048 -f -o xxx.log -e trace=network,write,read -p pid  以字符串形式来记录
@@ -27,19 +27,19 @@ strace -s 2048 -f -o xxx.log -e trace=network,write,read -p pid  以字符串形
 
 。">
 <meta property="og:title" content="linux常用命令记录">
-<meta property="og:description" content="# 根据pid知道可执行文件路径
+<meta property="og:description" content="### 根据pid知道可执行文件路径
 ```readlink -f /proc/pid/exe```
 
-# 遍历所有进程的可执行文件路径
+### 遍历所有进程的可执行文件路径
 ```for pid in $(ls /proc | grep -E '^[0-9]+$'); do exe=$(readlink -f /proc/$pid/exe 2>/dev/null) && echo '$pid $exe'; done```
 
-# find搜索
+### find搜索
 ```
 find / -type f -name '*.so' | grep -i 'log' | xargs -n1 -I{} sh -c 'strings '{}' | grep '搜索字符串' && echo 'find in: {}' && echo'
 find / -type f -name '*.so' | grep -i 'log' | xargs -n1 -I{} sh -c 'readelf -s '{}' | grep '搜索字符串' && echo 'find in: {}' && echo'
 ```
 
-# strace常用记录
+### strace常用记录
 ```
 strace -xx -f -o xxx.log -e trace=network,write,read -p pid     以16进制形式来记录
 strace -s 2048 -f -o xxx.log -e trace=network,write,read -p pid  以字符串形式来记录
@@ -110,15 +110,15 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>根据pid知道可执行文件路径</h1>
+<div class="markdown-body" id="postBody"><h3>根据pid知道可执行文件路径</h3>
 <p><code class="notranslate">readlink -f /proc/pid/exe</code></p>
-<h1>遍历所有进程的可执行文件路径</h1>
+<h3>遍历所有进程的可执行文件路径</h3>
 <p><code class="notranslate">for pid in $(ls /proc | grep -E '^[0-9]+$'); do exe=$(readlink -f /proc/$pid/exe 2&gt;/dev/null) &amp;&amp; echo "$pid $exe"; done</code></p>
-<h1>find搜索</h1>
+<h3>find搜索</h3>
 <pre class="notranslate"><code class="notranslate">find / -type f -name "*.so" | grep -i "log" | xargs -n1 -I{} sh -c 'strings "{}" | grep "搜索字符串" &amp;&amp; echo "find in: {}" &amp;&amp; echo'
 find / -type f -name "*.so" | grep -i "log" | xargs -n1 -I{} sh -c 'readelf -s "{}" | grep "搜索字符串" &amp;&amp; echo "find in: {}" &amp;&amp; echo'
 </code></pre>
-<h1>strace常用记录</h1>
+<h3>strace常用记录</h3>
 <pre class="notranslate"><code class="notranslate">strace -xx -f -o xxx.log -e trace=network,write,read -p pid     以16进制形式来记录
 strace -s 2048 -f -o xxx.log -e trace=network,write,read -p pid  以字符串形式来记录
 </code></pre></div>
