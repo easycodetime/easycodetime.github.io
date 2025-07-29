@@ -2,7 +2,20 @@
     "title":"easy blog",
     "subTitle":"easy blog",
     "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
-    "allHead":"<style>body[data-ui-pending] #content {opacity:0;transition:opacity 0.3s ease;}</style><script>document.documentElement.setAttribute('data-ui-pending','true');</script><link rel='stylesheet' href='https://code.buxiantang.top/assets/GmeekBaseTheme.css'><script src='https://code.buxiantang.top/assets/GmeekCustomizeCss.js' defer></script>",
+    "GMEEK_VERSION":"last",
+    
+    "commentLabelColor":"#006b75",
+    "yearColorList":["#bc4c00", "#0969da", "#1f883d", "#A333D0"],
+    "bottomText":"要做一个有swag的人",
 
-    "GMEEK_VERSION":"last"
+    "script":"<script src='https://pub-43c06573bc27485093cd50efd04e9e7b.r2.dev/GmeekArticleTOC.js'><script src='https://pub-43c06573bc27485093cd50efd04e9e7b.r2.dev/Gmeeklightbox.js'></script><script>document.querySelectorAll('a').forEach(anchor => {const img = anchor.querySelector('img');if (img && img.hasAttribute('data-canonical-src')) {const canonicalSrc = img.getAttribute('data-canonical-src');anchor.setAttribute('href', canonicalSrc);img.setAttribute('src', canonicalSrc);img.removeAttribute('data-canonical-src');}});</script>",
+    "allHead":"<script src='https://pub-43c06573bc27485093cd50efd04e9e7b.r2.dev/GmeekVercount.js'></script><script src='https://pub-43c06573bc27485093cd50efd04e9e7b.r2.dev/GmeekRonanTheme.js'></script>",
+
+    "themeMode":"fix",
+    "dayTheme":"light",
+    "nightTheme":"github-light",
+    
+    "onePageListNum":22,
+    "needComment":0,
+    "showPostSource":0
 }
