@@ -2,5 +2,10 @@
     "title":"easy blog",
     "subTitle":"easy blog",
     "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
+    
+    "themeMode":"fix",
+    "dayTheme":"dark",
+    "nightTheme":"dark-blue",
+
     "GMEEK_VERSION":"last"
 }
