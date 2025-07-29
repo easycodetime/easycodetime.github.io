@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Tue, 29 Jul 2025 09:21:54 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>linux常用命令记录</title><link>https://easycodetime.github.io/post/linux-chang-yong-ming-ling-ji-lu.html</link><description># 根据pid知道可执行文件路径
-`readlink -f /proc/pid/exe`
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Tue, 29 Jul 2025 09:45:42 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>linux常用命令记录</title><link>https://easycodetime.github.io/post/linux-chang-yong-ming-ling-ji-lu.html</link><description># 根据pid知道可执行文件路径
+```readlink -f /proc/pid/exe```
 
 # 遍历所有进程的可执行文件路径
-`for pid in $(ls /proc | grep -E '^[0-9]+$'); do exe=$(readlink -f /proc/$pid/exe 2&gt;/dev/null) &amp;&amp; echo '$pid $exe'; done`
+```for pid in $(ls /proc | grep -E '^[0-9]+$'); do exe=$(readlink -f /proc/$pid/exe 2&gt;/dev/null) &amp;&amp; echo '$pid $exe'; done```
 
 # find搜索
-`
+```
 find / -type f -name '*.so' | grep -i 'log' | xargs -n1 -I{} sh -c 'strings '{}' | grep '搜索字符串' &amp;&amp; echo 'find in: {}' &amp;&amp; echo'
 find / -type f -name '*.so' | grep -i 'log' | xargs -n1 -I{} sh -c 'readelf -s '{}' | grep '搜索字符串' &amp;&amp; echo 'find in: {}' &amp;&amp; echo'
-`
+```
 
 # strace常用记录
-`
+```
 strace -xx -f -o xxx.log -e trace=network,write,read -p pid     以16进制形式来记录
 strace -s 2048 -f -o xxx.log -e trace=network,write,read -p pid  以字符串形式来记录
-`
+```
 
 。</description><guid isPermaLink="true">https://easycodetime.github.io/post/linux-chang-yong-ming-ling-ji-lu.html</guid><pubDate>Tue, 29 Jul 2025 09:16:21 +0000</pubDate></item><item><title>EDR致盲 - 清除6大内核回调</title><link>https://easycodetime.github.io/post/EDR-zhi-mang-%20-%20-qing-chu-6-da-nei-he-hui-diao.html</link><description>## LIST_ENTRY 结构(注意,此结构出现频率极高!!!!!!!!!!!!)
 ```
