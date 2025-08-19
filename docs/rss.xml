@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Tue, 29 Jul 2025 09:46:19 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>linux常用命令记录</title><link>https://easycodetime.github.io/post/linux-chang-yong-ming-ling-ji-lu.html</link><description>### 根据pid知道可执行文件路径
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Tue, 19 Aug 2025 08:59:15 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>funchook库安装</title><link>https://easycodetime.github.io/post/funchook-ku-an-zhuang.html</link><description>## 编译 funchook 静态库
+`
+mkdir build &amp;&amp; cd build
+cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+make
+sudo make install
+
+-DCMAKE_POSITION_INDEPENDENT_CODE=ON  它会让 libfunchook.a 内部的目标文件都加上 -fPIC，这样才能安全地被 .so 使用
+`。</description><guid isPermaLink="true">https://easycodetime.github.io/post/funchook-ku-an-zhuang.html</guid><pubDate>Tue, 19 Aug 2025 08:58:42 +0000</pubDate></item><item><title>linux常用命令记录</title><link>https://easycodetime.github.io/post/linux-chang-yong-ming-ling-ji-lu.html</link><description>### 根据pid知道可执行文件路径
 ```readlink -f /proc/pid/exe```
 
 ### 遍历所有进程的可执行文件路径
