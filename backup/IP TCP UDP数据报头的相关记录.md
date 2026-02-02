@@ -95,7 +95,7 @@ TCP报头的长度
 ```
 
 ## UDP数据报头
-![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226215856227_2865.png?raw=true)
+
 ```c
 typedef struct _UDP_HEADER_
 {
@@ -176,5 +176,3 @@ unsigned short tcp_checksum(struct tcphdr *tcph , int len_tcp , struct sockaddr_
 
 }
 ```
-## UDP数据报头2
-![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226215856227_2865.png?raw=true)
