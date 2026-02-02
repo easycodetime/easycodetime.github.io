@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Mon, 02 Feb 2026 08:26:18 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>IP TCP UDP数据报头的相关记录</title><link>https://easycodetime.github.io/post/IP%20TCP%20UDP-shu-ju-bao-tou-de-xiang-guan-ji-lu.html</link><description># IP TCP UDP数据报头的相关记录
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Mon, 02 Feb 2026 08:27:19 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>IP TCP UDP数据报头的相关记录</title><link>https://easycodetime.github.io/post/IP%20TCP%20UDP-shu-ju-bao-tou-de-xiang-guan-ji-lu.html</link><description># IP TCP UDP数据报头的相关记录
 
 
 ## IP数据报头
@@ -96,7 +96,7 @@ TCP报头的长度
 ```
 
 ## UDP数据报头
-
+![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226215856227_2865.png?raw=true)
 ```c
 typedef struct _UDP_HEADER_
 {
