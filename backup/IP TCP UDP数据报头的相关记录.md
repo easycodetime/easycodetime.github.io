@@ -2,7 +2,7 @@
 
 
 ## IP数据报头
-![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226214359608_2250.png?raw=true)
+![](_v_images/20230226214359608_2250.png =500x)
 ```c
 typedef struct _IP_HEADER_V4_
 {
@@ -50,7 +50,7 @@ IP报头的长度
 ```
 
 ## TCP数据报头
-![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226215501000_20824.png?raw=true)
+![](_v_images/20230226215501000_20824.png =550x)
 ```c
 typedef struct _TCP_HEADER_
 {
@@ -95,7 +95,7 @@ TCP报头的长度
 ```
 
 ## UDP数据报头
-![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226215856227_2865.png?raw=true)
+![](_v_images/20230226215856227_2865.png  =400x)
 ```c
 typedef struct _UDP_HEADER_
 {
