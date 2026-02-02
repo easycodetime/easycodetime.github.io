@@ -1,5 +1,97 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Tue, 19 Aug 2025 08:59:15 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>funchook库安装</title><link>https://easycodetime.github.io/post/funchook-ku-an-zhuang.html</link><description>## 编译 funchook 静态库
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Mon, 02 Feb 2026 06:27:03 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>EDR致盲 - 清除6大内核回调</title><link>https://easycodetime.github.io/post/EDR-zhi-mang-%20-%20-qing-chu-6-da-nei-he-hui-diao.html</link><description># EDR致盲 - 清除6大内核回调
+
+## LIST_ENTRY 结构(注意,此结构出现频率极高!!!!!!!!!!!!)
+```
+Windows 内核的 LIST_ENTRY 结构定义如下：
+
+typedef struct _LIST_ENTRY {
+    struct _LIST_ENTRY* Flink;  // 指向下一个节点
+    struct _LIST_ENTRY* Blink;  // 指向上一个节点
+} LIST_ENTRY, *PLIST_ENTRY;
+
+内核中使用双向链表,内存布局大概如下
+typedef struct test
+{
+    ...
+    _LIST_ENTRY list;
+    int a;
+    int b;
+    char c[10];
+    ...
+}
+```
+
+## ObRegisterCallbacks(下面调试机器为windows7 x64系统，屏蔽EDR 对其3环进程的保护)
+```
+#初始加载pdb
+!sym noisy
+.reload /f nt
+
+x nt!PsProcessType
+dt nt!_OBJECT_TYPE
+
+
+```
+
+### 1)定位PsProcessType 和PsThreadType全局内核变量地址
+![](_v_images/20250310153913832_9247.png)
+
+### 2)获取PsProcessType的具体值(上一步获取的是指针),定位CallbackList链表(此链表中保存的就是我们要清除的回调函数地址)
+![](_v_images/20250310155104983_32105.png)
+
+### 3)查看CallbackList链表中的数据,定位具体要删除的回调函数地址(图中有点错误，选中的不是链表首尾，是下一节点和上一节点)
+![](_v_images/20250310164313536_27035.png)
+
+
+## CmRegisterCallback(清除注册表通知回调)
+
+### 1)定位CallbackListHead双向链表地址
+```
+uf nt!CmUnRegisterCallback
+x nt!CallbackListHead
+```
+![](_v_images/20250311104641992_1532.png)
+
+### 2)遍历CallbackListHead
+```
+!list -x 'dt nt!_LIST_ENTRY' nt!CallbackListHead
+
+typedef struct _CMREG_CALLBACK {
+    LIST_ENTRY List;
+    ULONG Unknown1;
+    ULONG Unknown2;
+    LARGE_INTEGER Cookie;
+    PVOID Unknown3;
+    PEX_CALLBACK_FUNCTION Function;
+} CMREG_CALLBACK, *PCMREG_CALLBACK;
+```
+![](_v_images/20250311111240442_28837.png)
+![](_v_images/20250311111428490_29548.png)
+
+### 3)致盲
+```
+dq nt!CallbackListHead
+eq fffff800`040db9f0 fffff800`040db9f0
+
+致盲原理 =&gt; 断链
+    1.方法一 判断双向链表中每项,哪个是杀软,在摘除当前项
+    2.方法二 摘除所有项,简单粗暴,当前是此方法
+```
+![](_v_images/20250311113229771_21636.png)
+
+## PsSetCreateProcessNotifyRoutine  PsSetCreateThreadNotifyRoutine PsSetLoadImageNotifyRoutine
+```
+进程通知回调、线程通知回调、Image 加载通知回调 摘除
+下面以 PsSetCreateProcessNotifyRoutine 举例,其它都是一样的结构
+```
+
+### 1)定位 PspCreateProcessNotifyRoutine 数组
+![](_v_images/20250311165644788_12695.png)
+
+### 2）遍历数据,判断是否致盲
+```
+下图中未公开的结构体为EX_CALLBACK_ROUTINE_BLOCK ，它是没有记录。</description><guid isPermaLink="true">https://easycodetime.github.io/post/EDR-zhi-mang-%20-%20-qing-chu-6-da-nei-he-hui-diao.html</guid><pubDate>Mon, 02 Feb 2026 06:19:27 +0000</pubDate></item><item><title>funchook库安装</title><link>https://easycodetime.github.io/post/funchook-ku-an-zhuang.html</link><description>## 编译 funchook 静态库
 `
 mkdir build &amp;&amp; cd build
 cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON
