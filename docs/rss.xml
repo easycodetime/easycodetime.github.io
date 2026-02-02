@@ -1,5 +1,33 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Mon, 02 Feb 2026 06:59:41 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>WFP初探</title><link>https://easycodetime.github.io/post/WFP-chu-tan.html</link><description># WFP初探
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>easy blog</title><link>https://easycodetime.github.io</link><description>easy blog</description><copyright>easy blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://easycodetime.github.io</link></image><lastBuildDate>Mon, 02 Feb 2026 07:08:21 +0000</lastBuildDate><managingEditor>easy blog</managingEditor><ttl>60</ttl><webMaster>easy blog</webMaster><item><title>WFP初探</title><link>https://easycodetime.github.io/post/WFP-chu-tan.html</link><description># WFP初探
+参考资料
+        https://www.cnblogs.com/XYDsoft/articles/16857933.html
+        https://learn.microsoft.com/zh-cn/windows/win32/fwp/tcp-packet-flows
+        https://bot-man-jl.github.io/articles/?post=2018/Learn-TCP-IP-from-WFP-2
+
+## WFP简述
+```
+WFP（Windows Filtering Platform）驱动框架，WFP是在WIN7以上系统中TDI 的替代框架，提供了更加强大的内核网络数据包的过滤，拦截，修改等诸多功能
+```
+
+
+## TCP三次握手在WFP的流动情况
+![](https://github.com/easycodetime/easycodetime.github.io/blob/main/blog_images/20230226174725553_15945.png?raw=true)
+```
+首先连接建立过程：
+    server端调用 socket， bind， listen， accept 等函数接收客户端连接
+    client端调用 socket， connect 建立连接，
+
+server
+    bind： FWPM_LAYER_ALE_BIND_REDIRECT_V4        这个支持win7以上系统
+    bind： FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4
+    listen: FWPM_LAYER_ALE_AUTH_LISTEN_V4         listen函数认证
+
+    接下来就是accept开始接收客户端的请求，首先接收到的是SYN数据包
+
+    SYN: FWPM_LAYER_INBOUND_IPPACKET_V4           SYN包首先进入IP层
+    SYN: FWPM_LAYER_INBOUND_TRANSPORT_V4          SYN包进入传输层
+    SYN: FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4       SYN进入ALE层，确认建立连接，同时给客户端回复SYN-ACK数据包。</description><guid isPermaLink="true">https://easycodetime.github.io/post/WFP-chu-tan.html</guid><pubDate>Mon, 02 Feb 2026 07:07:52 +0000</pubDate></item><item><title>WFP初探</title><link>https://easycodetime.github.io/post/WFP-chu-tan.html</link><description># WFP初探
 参考资料
         https://www.cnblogs.com/XYDsoft/articles/16857933.html
         https://learn.microsoft.com/zh-cn/windows/win32/fwp/tcp-packet-flows
